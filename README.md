@@ -7,6 +7,7 @@ Discord Bot Version von ZickZackHD
 + Mechanicer Log System
 
 **Requirements**
+
 [esx_mechanicjob](included)
 
 [FiveMIdentifierLogger](https://github.com/ThymonA/FiveMIdentifierLogger)
