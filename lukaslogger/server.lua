@@ -3,10 +3,10 @@ ESX = nil
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-local DISCORD_WEBHOOK = "https://ptb.discordapp.com/api/webhooks/732251281799774298/m8qddKyrAskvCq0KrDLb5BmRayt5fqlVyT7k0oAQsy9s2-kNfQ42fa7faIeLZg9Tg3tI"
---local DISCORD_WEBHOOK_Tunerdiscord = "https://discord.com/api/webhooks/725015822958854175/hY7y9rM2rZyjZb6nazjc28MDBJTIHkz9qN5hFWrCLSmO2q4mnWxFWCmez0yDEjWWwHfd"
+local DISCORD_WEBHOOK = "" --Your Discordwebhook
+
 local DISCORD_NAME = "Five-Star"
-local STEAM_KEY = "1B5F165DCCF413B015CC304E473309CF"
+local STEAM_KEY = ""--Your SteamAPIKey
 local DISCORD_IMAGE = "https://pbs.twimg.com/profile_images/847824193899167744/J1Teh4Di_400x400.jpg" -- default is FiveM logo
 
 --DON'T EDIT BELOW THIS
