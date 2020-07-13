@@ -12,5 +12,6 @@ client_scripts {
 --edit and cleand up by NebelRebell
 server_scripts {
 	'@mysql-async/lib/MySQL.lua',
+	'@FiveMIdentifierLogger',
 	'server.lua',
 }
