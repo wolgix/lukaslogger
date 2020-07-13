@@ -8,7 +8,9 @@ Discord Bot Version von ZickZackHD
 
 **Requirements**
 [esx_mechanicjob](included)
+[FiveMIdentifierLogger](https://github.com/ThymonA/FiveMIdentifierLogger)
 [fivem-mysql-async ](https://github.com/brouznouf/fivem-mysql-async)
+
 
 **Credits to the original Discord Bot [https://github.com/zerface/esx_discord_bot](https://github.com/zerface/esx_discord_bot)**
 
