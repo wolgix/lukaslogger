@@ -3,8 +3,8 @@ ESX = nil
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
-local DISCORD_WEBHOOK = "https://discord.com/api/webhooks/725035069563207710/2iBmwm1zfNtgevXWVt25LXX2lwazIzhoFMTLhZXTnlz1muSgnzXA-wvy5LPT0EBcsJEe"
-local DISCORD_WEBHOOK_Tunerdiscord = "https://discord.com/api/webhooks/725015822958854175/hY7y9rM2rZyjZb6nazjc28MDBJTIHkz9qN5hFWrCLSmO2q4mnWxFWCmez0yDEjWWwHfd"
+local DISCORD_WEBHOOK = "https://ptb.discordapp.com/api/webhooks/732251281799774298/m8qddKyrAskvCq0KrDLb5BmRayt5fqlVyT7k0oAQsy9s2-kNfQ42fa7faIeLZg9Tg3tI"
+--local DISCORD_WEBHOOK_Tunerdiscord = "https://discord.com/api/webhooks/725015822958854175/hY7y9rM2rZyjZb6nazjc28MDBJTIHkz9qN5hFWrCLSmO2q4mnWxFWCmez0yDEjWWwHfd"
 local DISCORD_NAME = "Five-Star"
 local STEAM_KEY = "1B5F165DCCF413B015CC304E473309CF"
 local DISCORD_IMAGE = "https://pbs.twimg.com/profile_images/847824193899167744/J1Teh4Di_400x400.jpg" -- default is FiveM logo
@@ -70,6 +70,7 @@ AddEventHandler('tunerloggertuning',function(price, kenzeichen)
 playerx = source
 local rawtext
 if playerx and price and kenzeichen ~= nil then
+
 	MySQL.Async.fetchScalar('SELECT owner FROM owned_vehicles WHERE plate = @plate', {
 		['@plate'] = kenzeichen
 	}, function (result)
@@ -77,11 +78,20 @@ if playerx and price and kenzeichen ~= nil then
 	MySQL.Async.fetchScalar('SELECT owner FROM owned_vehicles WHERE plate = @plate', {
 		['@plate'] = kenzeichen
 	}, function (result)
+	
+	local gta5liczence = 'license:'..result
+	print(gta5liczence)
+	--test
+	MySQL.Async.fetchScalar('SELECT name FROM user_identifiers WHERE license = @license', {
+		['@license'] = gta5liczence
+	}, function (steamname)
+	
+	
+ sendToDiscord(" Tuning-Logger", ' '..GetPlayerName(playerx)..' hat für '..steamname..' getuned!\n Kenzeichen: '..kenzeichen..'\n Preis: '..price..'$', 16711680)
+end)
+
 	end)
- sendToDiscord(" Tuning-Logger", 'Spieler '..GetPlayerName(playerx)..' hat für ['..result..'] mit dem Kenzeichen: '..kenzeichen..' und den Preis '..price..' getuned', 16711680)
-
-
-    --sendToDiscord(" Tuning-Logger", 'Spieler '..GetPlayerName(playerx)..' hat für '..GetPlayerName(GetPlayerID(xPlayer))..' den Preis '..price..' getuned', 16711680)
+	
 	end)
 
 end
@@ -120,10 +130,9 @@ function sendToDiscord(name, message, color)
             ["title"] = "**".. name .."**",
             ["description"] = message,
             ["footer"] = {
-                ["text"] = "Lukas logger",
+            ["text"] = "Lukas logger",
             },
         }
     }
   PerformHttpRequest(DISCORD_WEBHOOK, function(err, text, headers) end, 'POST', json.encode({username = DISCORD_NAME, embeds = connect, avatar_url = DISCORD_IMAGE}), { ['Content-Type'] = 'application/json' })
-  PerformHttpRequest(DISCORD_WEBHOOK_Tunerdiscord, function(err, text, headers) end, 'POST', json.encode({username = DISCORD_NAME, embeds = connect, avatar_url = DISCORD_IMAGE}), { ['Content-Type'] = 'application/json' })
-end
+  end
